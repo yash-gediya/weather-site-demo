@@ -1,12 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-import styled from "styled-components";
 import axios from "axios";
-import ReactMapboxGl, { Marker } from "react-mapbox-gl";
 import { mapBoxGeocodingAPI } from "../Map.services";
 import { Autocomplete, TextField } from "@mui/material";
-import { setPriority } from "os";
-import { error } from "console";
 import WeatherModal from "./WeatherModal";
 
 const MapContainer = () => {
@@ -17,7 +13,7 @@ const MapContainer = () => {
     72.579707, 23.021624,
   ]);
   const [properties, setProperties] = useState({ wikidata: "Q11854" });
-  const [map, setMap]: any = useState(null);
+  const [map]: any = useState(null);
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -51,8 +47,6 @@ const MapContainer = () => {
 
         el.addEventListener("click", handleIcon);
       }
-
-      // setMap(map);
     }
   }, [coordinateData]);
 
@@ -83,8 +77,6 @@ const MapContainer = () => {
   useEffect(() => {
     location.filter((item: any) => {
       if (item?.place_name === data) {
-        console.log(item);
-
         setProperties(item?.properties);
         setCoordinateData(item?.center);
       }
