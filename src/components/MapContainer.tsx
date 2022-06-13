@@ -48,6 +48,7 @@ const MapContainer = () => {
         el.addEventListener("click", handleIcon);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinateData]);
 
   const handleSearch = () => {
@@ -80,7 +81,10 @@ const MapContainer = () => {
         setProperties(item?.properties);
         setCoordinateData(item?.center);
       }
+      return item;
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const geojson: any = {
